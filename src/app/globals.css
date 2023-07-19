@@ -17,5 +17,5 @@
 }
 
 body {
-  @apply bg-purple-300 dark:bg-purple-500;
+  @apply bg-purple-100 dark:bg-purple-900;
 }

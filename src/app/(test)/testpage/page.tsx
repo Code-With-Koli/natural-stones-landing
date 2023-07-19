@@ -1,9 +1,13 @@
+import { Metadata } from 'next';
 import React from 'react';
 
 type Props = {};
-
-const page = (props: Props) => {
-  return <div>page</div>;
+export const metadata: Metadata = {
+  title: 'Test',
 };
 
-export default page;
+const TestPage = (props: Props) => {
+  return <main>TestPage</main>;
+};
+
+export default TestPage;
