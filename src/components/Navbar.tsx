@@ -25,7 +25,6 @@ const ToggleButton = ({ isScrolled }: any) => {
   const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => setMounted(true), []);
-  console.log({ mounted, resolvedTheme });
 
   return (
     <button

@@ -22,21 +22,21 @@ export const authOptions: NextAuthOptions = {
   jwt: {
     secret: process.env.NEXTAUTH_SECRET
   },
-  debug: true,
+  debug: false,
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      console.log({user, account, profile, email, credentials})
+      // console.log({user, account, profile, email, credentials})
       return true;
     },
     async jwt({ token, account,user }) {
-      console.log('called jwt',account)
+      // console.log('called jwt',account)
       if (user) {
         token.accessToken = account?.id_token;
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API_URL}/api/auth/${account!.provider}/callback?access_token=${account!.access_token}`
         );
         const data = await response.json();
-          console.log("🚀 ~ file: authOptions.ts:37 ~ jwt ~ response:", {data})
+          // console.log("🚀 ~ file: authOptions.ts:37 ~ jwt ~ response:", {data})
         token.jwt = data.jwt;
         token.id = data.user.id;
       }
@@ -44,7 +44,7 @@ export const authOptions: NextAuthOptions = {
         return token;
     },
     async session({ session, token }) {
-      console.log('called session',{token})
+      // console.log('called session',{token})
       // Send properties to the client, like an access_token and user id from a provider.
       session.accessToken = token?.accessToken;
       session.jwt = token?.jwt

@@ -3,10 +3,9 @@ import './globals.css';
 import 'antd/dist/reset.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import NextAuthSessionProvider from './providers/sessionProvider';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
-import { ThemeProvider } from 'next-themes';
+import Providers from '@/services/providers/providers';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -55,13 +54,11 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <NextAuthSessionProvider>
-          <ThemeProvider attribute='class'>
-            <Navbar />
-            {children}
-            <Footer />
-          </ThemeProvider>
-        </NextAuthSessionProvider>
+        <Providers>
+          <Navbar />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

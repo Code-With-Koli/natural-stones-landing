@@ -1,0 +1,37 @@
+query getAllProducts($pageSize: Int = 100){
+  products(pagination:{pageSize: $pageSize}){
+    data{
+      id
+      attributes{
+        name
+        description
+        isAvailable
+        slug
+        badge
+        price{
+          id
+          badge
+          isDiscounted
+          discounted_amount
+          amount
+          discount_percentage
+        }
+        in_stock{
+          id
+          total
+          delivering
+          sold
+          gifted
+          available
+        }
+      }
+    }
+    meta{
+      pagination{
+        total
+        page
+        pageSize
+      }
+    }
+  }
+}
